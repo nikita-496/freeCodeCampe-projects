@@ -22,18 +22,7 @@
         }
     ]
 
-        //вывод случайной цитаты или автора 
-             function random (quoteBase) {
-
-            //Выбор случайного элемента-цитаты из массива цитат
-            function randomIndex (min, max) {
-                let random = min - 0.5 + Math.random() * (max - min + 1);
-                return quoteBase[Math.round(random)]
-            }
-            
-            return  randomIndex(0, quoteBase.length-1)
-        } 
-
+        
 
         window.onload = init;
         function init() {
@@ -41,9 +30,11 @@
         }
 
         function generateQuote() {
-            console.log('generateQuote')
-            document.getElementById("text").innerText = random(QUOTEBASE).quote; 
-            document.getElementById("author").innerText = random(QUOTEBASE).author; 
+            let quoteSize = QUOTEBASE.length - 1;
+            let randomIndex =  Math.random() * (quoteSize );
+
+            document.getElementById("text").innerText =QUOTEBASE [ Math.round(randomIndex) ].quote; 
+            document.getElementById("author").innerText = QUOTEBASE [ Math.round(randomIndex) ].author; 
         }
 
     </script>
@@ -59,7 +50,7 @@
         <div id= "text"></div>
         <div id= "author"></div>
         <button id= "new-quote" onclick="generateQuote()">New-quote </button>
-        <a src ="#" id="tweet-quote">Tweet this quote</a> 
+        <a href="twitter.com/intent/tweet" id="tweet-quote">Tweet this quote</a> 
       </wrapper>
     <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
 </body>
