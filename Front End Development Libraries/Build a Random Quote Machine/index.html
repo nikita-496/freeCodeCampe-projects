@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script>
+
+        const QUOTEBASE = [
+            {'quote' : "Это просто безумство: делать то же самое и ждать других результатов.",
+            'author' : "Альберт Эйнштейн"
+        },
+        {
+            'quote' : "Алиса: Как долго это навсегда? Белый Кролик: Иногда только одна секунда.",
+            'author' : "Льюис Кэрролл"
+        },
+        {
+            'quote' : "Они смеются надо мной, потому что я другой, я смеюсь над ними, потому что они все одинаковые.",
+            'author' : "Курт Кобейн"
+        }
+    ]
+
+        //вывод случайной цитаты или автора 
+             function random (quoteBase) {
+
+            //Выбор случайного элемента-цитаты из массива цитат
+            function randomIndex (min, max) {
+                let random = min - 0.5 + Math.random() * (max - min + 1);
+                return quoteBase[Math.round(random)]
+            }
+            
+            return  randomIndex(0, quoteBase.length-1)
+        } 
+
+
+        window.onload = init;
+        function init() {
+           return generateQuote()
+        }
+
+        function generateQuote() {
+            console.log('generateQuote')
+            document.getElementById("text").innerText = random(QUOTEBASE).quote; 
+            document.getElementById("author").innerText = random(QUOTEBASE).author; 
+        }
+
+    </script>
+
+    <style>
+        * {
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <wrapper id = "quote-box">
+        <div id= "text"></div>
+        <div id= "author"></div>
+        <button id= "new-quote" onclick="generateQuote()">New-quote </button>
+        <a src ="#" id="tweet-quote">Tweet this quote</a> 
+      </wrapper>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+</body>
+</html>
